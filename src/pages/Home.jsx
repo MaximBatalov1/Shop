@@ -29,16 +29,16 @@ const Home = () => {
     }, [categoryId, sortType]);
 
     return (
-        <>
+        <div className="dark:bg-gray-700 dark:text-white min-h-screen p-4">
             <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                 <Categories value={categoryId} onChangeCategory={(i) => setCategoryId(i)} />
                 <Sort value={sortType} onChangeSort={(i) => setSortType(i)} />
             </div>
-            <h2 className="text-2xl font-bold mb-4 dark:text-white">Все скрипты</h2>
-            <h3 className="text-lg mb-6 dark:text-white">
+            <h2 className="text-2xl font-bold mb-4">Все скрипты</h2>
+            <h3 className="text-lg mb-6">
                 Тут вы сможете найти инструменты для оптимизации и автоматизации работы.
             </h3>
-            <h4 className="text-base mb-6 dark:text-white">Чтобы узнать поподробнее о товаре просто наведите на него курсор.</h4>
+            <h4 className="text-base mb-6">Чтобы узнать поподробнее о товаре просто наведите на него курсор.</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {isLoading
                     ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
@@ -53,7 +53,7 @@ const Home = () => {
                         />
                     ))}
             </div>
-        </>
+        </div>
     );
 };
 

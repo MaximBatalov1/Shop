@@ -15,7 +15,7 @@ import Pay from "./pages/Pay";
 function App() {
     return (
         <Provider store={store}>
-            <div className="wrapper">
+            <div className="wrapper dark:bg-blue-900">
                 <Navbar />
                 <Header />
                     <div className="container mx-auto">

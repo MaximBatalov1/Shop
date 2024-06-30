@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { setUser, clearUser } from '../redux/userSlice';
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
+
 const Navbar = () => {
     const cartItems = useSelector((state) => state.cart.items);
     const user = useSelector((state) => state.user.user);
@@ -38,8 +39,8 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-purple-400 shadow-lg" >
-            <div className=" mx-auto flex justify-between items-center py-4 px-4">
+        <div className="bg-purple-400 shadow-lg w-full">
+            <div className="container mx-auto flex justify-between items-center py-4 px-4">
                 <div className="flex items-center space-x-4">
                     <label className="cursor-pointer grid place-items-center">
                         <input
@@ -83,7 +84,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="flex-none flex items-center space-x-4">
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end relative">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <svg
@@ -105,7 +106,7 @@ const Navbar = () => {
                         </div>
                         <div
                             tabIndex={0}
-                            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+                            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow absolute right-0"
                         >
                             <Link to="/cart" className="card-body">
                                 <span className="font-bold text-lg">{itemCount} товаров</span>
@@ -116,7 +117,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end relative">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 {user ? (
@@ -131,7 +132,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 absolute right-0"
                         >
                             {user ? (
                                 <>
@@ -147,7 +148,7 @@ const Navbar = () => {
                                         onSuccess={(credentialResponse) => {
                                             const profile = jwtDecode(credentialResponse.credential);
                                             dispatch(setUser(profile));
-                                            localStorage.setItem('user', JSON.stringify(profile)); // Save user to localStorage
+                                            localStorage.setItem('user', JSON.stringify(profile));
                                         }}
                                         onError={() => {
                                             console.log("Login Failed");
